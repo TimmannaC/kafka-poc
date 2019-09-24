@@ -1,0 +1,41 @@
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.kafka.common.serialization.Deserializer;
+
+import java.io.IOException;
+import java.util.Map;
+
+
+public class JsonDeSerializer<T> implements Deserializer<T> {
+
+    private ObjectMapper objectMapper = new ObjectMapper();
+    private Class<T> tClass;
+
+    public JsonDeSerializer(Class Type) {
+        this.tClass = Type;
+    }
+
+    public void configure(Map<String, ?> configs, boolean isKey) { }
+
+    public T deserialize(String topic, byte[] bytes) {
+        if (bytes == null)
+            return null;
+
+        T data=null;
+        try{
+            data = objectMapper.readValue(bytes,tClass);
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
+
+    public void close() {
+
+    }
+}

@@ -16,20 +16,7 @@ public class StockMarket {
     private int totalTrades;
     private String isin;
 
-    public StockMarket(String symbol, String series, float open, float high, float low, float close, float last, float prevClose, long totTrdQty, long totTrdVal, Date timestamp, int totalTrades, String isin) {
-        this.symbol = symbol;
-        this.series = series;
-        this.open = open;
-        this.high = high;
-        this.low = low;
-        this.close = close;
-        this.last = last;
-        this.prevClose = prevClose;
-        this.totTrdQty = totTrdQty;
-        this.totTrdVal = totTrdVal;
-        this.timestamp = timestamp;
-        this.totalTrades = totalTrades;
-        this.isin = isin;
+    public StockMarket(){
     }
 
     public String getSymbol() {
@@ -82,5 +69,58 @@ public class StockMarket {
 
     public String getIsin() {
         return isin;
+    }
+
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
+    public void setOpen(float open) {
+        this.open = open;
+    }
+
+    public void setHigh(float high) {
+        this.high = high;
+    }
+
+    public void setLow(float low) {
+        this.low = low;
+    }
+
+    public void setClose(float close) {
+        this.close = close;
+    }
+
+    public void setLast(float last) {
+        this.last = last;
+    }
+
+    public void setPrevClose(float prevClose) {
+        this.prevClose = prevClose;
+    }
+
+    public void setTotTrdQty(long totTrdQty) {
+        this.totTrdQty = totTrdQty;
+    }
+
+    public void setTotTrdVal(long totTrdVal) {
+        this.totTrdVal = totTrdVal;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setTotalTrades(int totalTrades) {
+        this.totalTrades = totalTrades;
+    }
+
+    public void setIsin(String isin) {
+        this.isin = isin;
     }
 }

@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Date;
 
 public class StockMarket {
@@ -10,13 +11,21 @@ public class StockMarket {
     private float close;
     private float last;
     private float prevClose;
-    private long totTrdQty;
-    private long totTrdVal;
+    private float totTrdQty;
+    private float totTrdVal;
     private Date timestamp;
-    private int totalTrades;
+    private float totalTrades;
     private String isin;
 
     public StockMarket(){
+    }
+
+
+    public static StockMarket FindLargetValue(StockMarket obj1, StockMarket obj2){
+        System.out.println("************ Inside the FindLargestValue method ************");
+            if (obj1.getTotTrdVal() >= obj2.getTotTrdVal())
+                return obj1;
+            return obj2;
     }
 
     public String getSymbol() {
@@ -51,11 +60,11 @@ public class StockMarket {
         return prevClose;
     }
 
-    public long getTotTrdQty() {
+    public float getTotTrdQty() {
         return totTrdQty;
     }
 
-    public long getTotTrdVal() {
+    public float getTotTrdVal() {
         return totTrdVal;
     }
 
@@ -63,7 +72,7 @@ public class StockMarket {
         return timestamp;
     }
 
-    public int getTotalTrades() {
+    public float getTotalTrades() {
         return totalTrades;
     }
 
@@ -104,11 +113,11 @@ public class StockMarket {
         this.prevClose = prevClose;
     }
 
-    public void setTotTrdQty(long totTrdQty) {
+    public void setTotTrdQty(float totTrdQty) {
         this.totTrdQty = totTrdQty;
     }
 
-    public void setTotTrdVal(long totTrdVal) {
+    public void setTotTrdVal(float totTrdVal) {
         this.totTrdVal = totTrdVal;
     }
 
@@ -116,11 +125,30 @@ public class StockMarket {
         this.timestamp = timestamp;
     }
 
-    public void setTotalTrades(int totalTrades) {
+    public void setTotalTrades(float totalTrades) {
         this.totalTrades = totalTrades;
     }
 
     public void setIsin(String isin) {
         this.isin = isin;
+    }
+
+    @Override
+    public String toString() {
+        return "StockMarket{" +
+                "symbol='" + symbol + '\'' +
+                ", series='" + series + '\'' +
+                ", open=" + open +
+                ", high=" + high +
+                ", low=" + low +
+                ", close=" + close +
+                ", last=" + last +
+                ", prevClose=" + prevClose +
+                ", totTrdQty=" + totTrdQty +
+                ", totTrdVal=" + totTrdVal +
+                ", timestamp=" + timestamp +
+                ", totalTrades=" + totalTrades +
+                ", isin='" + isin + '\'' +
+                '}';
     }
 }

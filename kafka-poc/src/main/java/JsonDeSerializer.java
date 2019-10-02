@@ -7,16 +7,17 @@ import java.io.IOException;
 import java.util.Map;
 
 
+
 public class JsonDeSerializer<T> implements Deserializer<T> {
 
     private ObjectMapper objectMapper = new ObjectMapper();
     private Class<T> tClass;
 
-    public JsonDeSerializer(Class Type) {
-        this.tClass = Type;
-    }
+    public JsonDeSerializer() { }
 
-    public void configure(Map<String, ?> configs, boolean isKey) { }
+    public void configure(Map<String, ?> configs, boolean isKey) {
+        this.tClass = (Class<T>) configs.get("JsonPOJOClass");
+    }
 
     public T deserialize(String topic, byte[] bytes) {
         if (bytes == null)
@@ -25,9 +26,7 @@ public class JsonDeSerializer<T> implements Deserializer<T> {
         T data=null;
         try{
             data = objectMapper.readValue(bytes,tClass);
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
+        } catch (JsonParseException | JsonMappingException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,6 +35,5 @@ public class JsonDeSerializer<T> implements Deserializer<T> {
     }
 
     public void close() {
-
     }
 }

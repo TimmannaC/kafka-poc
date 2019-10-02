@@ -18,6 +18,7 @@ public class JsonSerializer<T> implements Serializer<T> {
 
     public byte[] serialize(String topic, T data) {
 
+        System.out.println("********** Inside the serializer function ***********");
         if(data == null)
             return null;
 

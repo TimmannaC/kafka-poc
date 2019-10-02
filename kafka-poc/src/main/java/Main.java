@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         ExecutorService service = Executors.newFixedThreadPool(Integer.parseInt(args[0]));
-        File path = new File("/home/kumar/Downloads/assignments/KafkaRequirement/data");
+        File path = new File("");
 
         for (File fileName :path.listFiles()) {
             System.out.println("Reading the fileName : "+fileName.toString());
